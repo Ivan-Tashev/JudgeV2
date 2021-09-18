@@ -1,0 +1,11 @@
+.DS_Store
+.gradle/
+.idea/
+LICENSE.writing.txt
+README.adoc
+LICENSE.txt
+build/
+gradle/
+gradlew
+gradlew.bat
+settings.gradle

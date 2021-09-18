@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Judge v2</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+
+    </head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+        <a class="navbar-brand" href="/">
+            <h1 class="tm-site-title mb-0">Judge v2</h1>
+        </a>
+        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item" >
+                    <a class="nav-link" href="#">
+                        <span>Hello {username}</span>
+                    </a>
+                </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Add Exercise</a>
+                            <a class="dropdown-item" href="#">Add Role</a>
+
+                        </div>
+                    </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Check Homework</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Homework</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex" href="#">
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row tm-content-row tm-mt-big">
+            <div class="tm-col tm-col-big">
+                <div class="bg-white tm-block ">
+                    <div class="row text-center justify-content-center">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Rules for scoring!</h2>
+                        </div>
+                    </div>
+                    <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
+                        <li class="tm-list-group-item">
+                            Download the archived file
+                        </li>
+                        <li class="tm-list-group-item">
+                            Import the Project
+                        </li>
+                        <li class="tm-list-group-item">
+                            Add custom/additional data if needed
+                        </li>
+                        <li class="tm-list-group-item">
+                            Change the credentials in application properties
+                        </li>
+                        <li class="tm-list-group-item">
+                            Test all exercises and verify the results
+                        </li>
+                        <li class="tm-list-group-item">
+                            Write detailed comment for homework
+                        </li>
+                        <li class="tm-list-group-item">
+                            Don't be mean with scoring :) !!!!
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="tm-col tm-col-big text-center justify-content-center">
+                <div class="bg-white tm-block">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title">Add Comments for Homework</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="#" method=""
+                                  class="tm-signup-form">
+                                <div class="form-group">
+                                    <label for="score" >Score</label>
+                               
+									<small class="text-danger">Score must be between 2 and 6 inclusive</small>
+                                    <br/>
+                                    <select required class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" name="score" id="score">
+                                        <option value="" selected>Enter your score</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="textContent" >Description</label>
+                                    <br/>
+                                    <textarea id="textContent" name="textContent" class="form-control validate"
+                                              rows="3" placeholder="Enter your comment"  required></textarea>
+                                    
+                                        <small class="text-danger" > Comment text content must be more than 3 characters!
+                                        </small>
+                                   
+                                </div>
+
+                                <input type="hidden" name="homeworkId" id="homeworkId">
+
+                                <div class="row">
+                                    <div class="col-12 col-sm-8 tm-btn-right">
+                                        <button type="submit" class="btn btn-danger">Add Comment
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-col tm-col-small justify-content-center text-center">
+                <div class="bg-white tm-block">
+                    <h2 class="tm-block-title">Download</h2>
+                    <img src="/img/homework.png" alt="Homework pic"  width="100%">
+                    <div class="custom-file mt-3 mb-3">
+                        <input id="fileInput" type="file" style="display:none;" />
+                        <a href="user github address + /archive/master.zip">
+                            <input type="button" class="btn btn-primary d-block mx-xl-auto" value="Download homework"
+                        /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <footer class="row">
+        <div class="col-12 container-fluid text-right font-weight-light">
+            <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+                &copy; Spring Team 2020
+            </p>
+        </div>
+    </footer>
+    </div>
+</body>
+</html>

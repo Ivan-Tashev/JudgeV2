@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Judge v2</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+
+    </head>
+
+<body>
+<div class="container">
+    <div class="row rounded">
+        <div class="col-12">
+               <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+        <a class="navbar-brand" href="/">
+            <h1 class="tm-site-title mb-0">Judge v2</h1>
+        </a>
+        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item" >
+                    <a class="nav-link" href="#">
+                        <span>Hello {username}</span>
+                    </a>
+                </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Add Exercise</a>
+                            <a class="dropdown-item" href="#">Add Role</a>
+
+                        </div>
+                    </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Check Homework</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Homework</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex" href="#">
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row tm-mt-big justify-content-center">
+        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+            <div class="bg-white tm-block">
+                <div class="row justify-content-center text-center">
+                    <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">User Profile</h2>
+                    </div>
+                </div>
+                <div class="row mt-4 tm-edit-product-row">
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <form action="" class="tm-edit-product-form" >
+                            <div class="input-group mb-3">
+                                <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
+                                    Username
+                                </label>
+                                <input disabled id="name" name="name" type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="homeworks" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">All sent homeworks</label>
+                                <textarea disabled id="homeworks" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" rows="3" ></textarea>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Email
+                                </label>
+                                <input disabled id="email"   name="email" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                       data-large-mode="true">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="git" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Github Address
+                                </label>
+                                <input disabled  id="git" name="git" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
+                        <img src="/img/user-picture.jpg" alt="Profile Image" class="img-fluid mx-auto d-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <footer class="row">
+        <div class="col-12 container-fluid text-right font-weight-light">
+            <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+                &copy; Spring Team 2020
+            </p>
+        </div>
+    </footer>
+</div>
+
+</body>
+
+</html>
