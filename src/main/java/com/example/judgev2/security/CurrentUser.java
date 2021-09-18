@@ -15,31 +15,34 @@ public class CurrentUser {
         return id;
     }
 
-    public void setId(Long id) {
+    public CurrentUser setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public CurrentUser setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public RoleEnum getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public CurrentUser setRole(RoleEnum role) {
         this.role = role;
+        return this;
     }
 
     public boolean isAnonymous() {
         return this.username == null;
     }
 
-    public boolean isAdmin() {
+    public boolean isAdmin () {
         return this.role == RoleEnum.ADMIN;
     }
 }

@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        if(!model.containsAttribute("userLoginBindingModel")){
+        if (!model.containsAttribute("userLoginBindingModel")) {
             model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
             model.addAttribute("notFound", false);
         }
@@ -38,31 +38,32 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public String loginConfirm(@Valid @ModelAttribute UserLoginBindingModel userLoginBindingModel,
-                               BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes,
-                               HttpSession httpSession) {
-        if (bindingResult.hasErrors()) {
+    public String loginConfirm(@Valid
+                               @ModelAttribute UserLoginBindingModel userLoginBindingModel, // model reading Data from <form>
+                               BindingResult bindingResult, // holds Target model(UserLoginModel) and Errors
+                               RedirectAttributes redirectAttributes, // to return Data into <form>
+                               HttpSession httpSession) { // holds attribute with LoggedIn user all data (from DB)
+        // 1. CHECK FOR ENTRY @VALIDATIONS
+        if (bindingResult.hasErrors()) { // if have errors (like: username length...)
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
                     bindingResult);
             return "redirect:/users/login";
         }
-
-        // save User in session
+        // save User in HttpSession or @Bean CurrentUser
         final UserServiceModel user = userService.findUserByUsernameAndPassword(userLoginBindingModel.getUsername(),
                 userLoginBindingModel.getPassword());
-
-        if(user == null){
+        // 2. CHECK FOR CORRECT LOGIN (username=pass)
+        if (user == null) { // if not found in DB
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             redirectAttributes.addFlashAttribute("notFound", true);
             return "redirect:login";
         }
-        // Option A
-        // httpSession.setAttribute("user", user);
+        // Option A - HttpSession to be set with UserServiceModel data coming from UserLoginBindingModel
+        httpSession.setAttribute("user", user);
 
-        // Option B
-
+        // Option B - @Bean CurrentUser to be set with UserServiceModel data coming from UserLoginBindingModel
+        userService.login(user);
 
         return "redirect:/";
     }
