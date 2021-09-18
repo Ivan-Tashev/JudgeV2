@@ -13,20 +13,21 @@
             <ul th:unless="${@currentUser.isAnonymous()}" class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span th:text="|Hello ${@currentUser.username}|"></span>
+<!--                        <span th:text="|Hello ${@currentUser.username}|"></span>-->
+                        <span data-th-text="|Hello ${@currentUser.username}|"></span>
                         <!--<span th:object="${#httpSession.getAttribute('user')}" th:text="*{username}"></span>-->
                     </a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li th:if="${@currentUser.isAdmin()}" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                        role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
                         Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Add Exercise</a>
-                        <a class="dropdown-item" href="#">Add Role</a>
+                        <a class="dropdown-item" href="/exercises/add">Add Exercise</a>
+                        <a class="dropdown-item" href="/roles/add">Add Role</a>
 
                     </div>
                 </li>
@@ -46,7 +47,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link d-flex" href="">
+                    <a class="nav-link d-flex" href="/users/logout">
                         <span>Logout</span>
                     </a>
                 </li>

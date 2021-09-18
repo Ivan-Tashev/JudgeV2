@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
-    private final CurrentUser currentUser;
+    private CurrentUser currentUser;
     private final ModelMapper modelMapper;
     private final RoleService roleService;
 
@@ -43,5 +43,10 @@ public class UserServiceImpl implements UserService {
         currentUser.setId(userServiceModel.getId())
                 .setUsername(userServiceModel.getUsername())
                 .setRole(userServiceModel.getRole().getName());
+    }
+
+    @Override
+    public void logoutUser() {
+        currentUser.setId(null).setUsername(null).setRole(null);
     }
 }
