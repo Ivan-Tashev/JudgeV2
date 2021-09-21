@@ -10,6 +10,9 @@ import com.example.judgev2.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
@@ -48,5 +51,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public void logoutUser() {
         currentUser.setId(null).setUsername(null).setRole(null);
+    }
+
+    @Override
+    public List<String> findAllUsernames() {
+        return userRepo.findAllUsernames();
+    }
+
+    @Override
+    public void changeRole(String username, String role) {
+        Optional<User> user = userRepo.findByUsername(username);
+
+        if (user.isPresent()) {
+            user.get().setRole(roleService.findRole(RoleEnum.valueOf(role.toUpperCase())));
+            // Optional<>.get() -> get the object
+            userRepo.save(user.get());
+        }
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepo.findByUsername(username).orElse(null);
     }
 }

@@ -1,7 +1,9 @@
 package com.example.judgev2.web;
 
 import com.example.judgev2.model.binding.ExerciseAddBindingModel;
+import com.example.judgev2.model.service.ExerciseServiceModel;
 import com.example.judgev2.service.ExerciseService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,9 +18,11 @@ import javax.validation.Valid;
 @RequestMapping("/exercises")
 public class ExerciseController {
     private final ExerciseService exerciseService;
+    private final ModelMapper modelMapper;
 
-    public ExerciseController(ExerciseService exerciseService) {
+    public ExerciseController(ExerciseService exerciseService, ModelMapper modelMapper) {
         this.exerciseService = exerciseService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/add")
@@ -38,18 +42,18 @@ public class ExerciseController {
             redirectAttributes.addFlashAttribute("exerciseAddBindingModel", exerciseAddBindingModel);
             redirectAttributes.addFlashAttribute(
                     "org.springframework.validation.BindingResult.exerciseAddBindingModel", bindingResult);
-            return "redirect:/exercises/add";
+            return "redirect:add";
         }
         // check if Exercise exits in DB (it must ne Unique)
         if (!exerciseService.checkIfExist(exerciseAddBindingModel.getName())) {
             exerciseAddBindingModel.setExist(true);
             redirectAttributes.addFlashAttribute("exerciseAddBindingModel", exerciseAddBindingModel);
-            return "redirect:/exercises/add";
+            return "redirect:add";
         }
         // save exercise in DB
-        exerciseService.addExercise(exerciseAddBindingModel);
+        exerciseService.addExercise(modelMapper.map(exerciseAddBindingModel, ExerciseServiceModel.class));
 
-        return "home";
+        return "redirect:/";
     }
 }
 

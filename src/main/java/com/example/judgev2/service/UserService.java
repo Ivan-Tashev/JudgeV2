@@ -1,8 +1,12 @@
 package com.example.judgev2.service;
 
+import com.example.judgev2.model.entity.User;
 import com.example.judgev2.model.service.UserServiceModel;
 
+import java.util.List;
+
 public interface UserService {
+
     void registerUser(UserServiceModel userServiceModel);
 
     UserServiceModel findUserByUsernameAndPassword(String username, String password);
@@ -10,4 +14,10 @@ public interface UserService {
     void login(UserServiceModel userServiceModel);
 
     void logoutUser();
+
+    List<String> findAllUsernames();
+
+    void changeRole(String username, String role);
+
+    User findByUsername(String username);
 }
