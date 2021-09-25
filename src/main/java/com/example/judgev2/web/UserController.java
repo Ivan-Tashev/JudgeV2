@@ -3,8 +3,8 @@ package com.example.judgev2.web;
 import com.example.judgev2.model.binding.UserLoginBindingModel;
 import com.example.judgev2.model.view.UserProfileViewModel;
 import com.example.judgev2.model.binding.UserRegisterBindingModel;
-import com.example.judgev2.model.entity.User;
 import com.example.judgev2.model.service.UserServiceModel;
+import com.example.judgev2.security.CurrentUser;
 import com.example.judgev2.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -15,17 +15,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, ModelMapper modelMapper, CurrentUser currentUser) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.currentUser = currentUser;
     }
 
     @GetMapping("/login")
@@ -106,6 +107,9 @@ public class UserController {
 
     @GetMapping("/profile/{id}")
     public String getProfilePage(@PathVariable Long id, Model model) {
+        if (currentUser.isAnonymous()){
+            return "login";
+        }
         UserProfileViewModel userProfileViewModel = userService.findById(id);
         model.addAttribute("user", userProfileViewModel);
         return "profile";

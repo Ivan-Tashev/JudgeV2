@@ -23,4 +23,6 @@ public interface UserService {
     User findByUsername(String username);
 
     UserProfileViewModel findById(Long id);
+
+    Long usersCount();
 }

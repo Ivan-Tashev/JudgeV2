@@ -44,11 +44,7 @@
                         </div>
                     </div>
                     <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
-
-                        <li class="tm-list-group-item">Top student one</li>
-                        <li class="tm-list-group-item">Top student two</li>
-                        <li class="tm-list-group-item">Top student three</li>
-
+                        <li th:each="s : ${student}" th:text="*{s}" class="tm-list-group-item">Top student one</li>
                     </ol>
                 </div>
             </div>
@@ -61,11 +57,7 @@
                 <div class="bg-white tm-block h-100">
                     <h2 class="tm-block-title">Active Exercises</h2>
                     <ol class="tm-list-group">
-
-                        <li class="tm-list-group-item">Active exercise one</li>
-                        <li class="tm-list-group-item">Active exercise two</li>
-                        <li class="tm-list-group-item">Active exercise three</li>
-
+                        <li th:each="e : ${exercise}" th:text="*{e}" class="tm-list-group-item">Active exercise one</li>
                     </ol>
                 </div>
             </div>
@@ -116,7 +108,7 @@
 
     function drawAreaChart() {
         //ToDo averageGrades
-        let averageGrade = 4;
+        let averageGrade = [[${avg}]];
 
         let dataArea = google.visualization.arrayToDataTable([
             ['Grades', 'Legacy', 'Now'],
@@ -145,7 +137,7 @@
 
     function drawGauge() {
         //ToDo total count of register users
-        let totalStudents = 20;
+        let totalStudents = [[${usersCount}]];
         let dataGauge = google.visualization.arrayToDataTable([
             ['Label', 'Value'],
             ['All users', totalStudents]

@@ -56,14 +56,14 @@
                             <hr/>
                             <div class="input-group">
                                 <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>
-                                <input th:field="*{username}" th:errorclass="bg-danger" name="username" type="text"
+                                <input th:field="*{username}" th:errorclass="bg-danger" name="username" type="text" value="anl"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                        id="username" placeholder="Username" required>
                             </div>
                             <div class="input-group mt-3">
                                 <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Password</label>
                                 <input th:field="*{password}" th:errorclass="bg-danger" name="password" type="password" class="form-control validate"
-                                       id="password" placeholder="Password" required>
+                                       id="password" placeholder="Password" value="123" required>
                             </div>
                             <div class="input-group mt-3">
                                 <button type="submit" class="btn btn-primary d-inline-block mx-auto">Login</button>

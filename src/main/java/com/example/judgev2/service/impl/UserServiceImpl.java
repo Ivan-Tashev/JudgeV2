@@ -86,4 +86,9 @@ public class UserServiceImpl implements UserService {
                         .map(homework -> homework.getExercise().getName())
                         .collect(Collectors.toSet()));
     }
+
+    @Override
+    public Long usersCount() {
+        return userRepo.count();
+    }
 }

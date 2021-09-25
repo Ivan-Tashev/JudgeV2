@@ -10,6 +10,8 @@ import com.example.judgev2.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentServiceImpl implements CommentService {
     private final CommentRepo commentRepo;
@@ -33,5 +35,15 @@ public class CommentServiceImpl implements CommentService {
                         .setAuthor(userService.findByUsername(currentUser.getUsername()));
 
         commentRepo.save(modelMapper.map(commentServiceModel, Comment.class));
+    }
+
+    @Override
+    public List<String> getTopScoreStudents() {
+        return commentRepo.findTopByAvgScore();
+    }
+
+    @Override
+    public Double getAverageScore() {
+        return commentRepo.getAvgScore();
     }
 }
