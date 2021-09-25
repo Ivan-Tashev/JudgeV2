@@ -1,21 +1,21 @@
 package com.example.judgev2.web;
 
 import com.example.judgev2.model.binding.UserLoginBindingModel;
+import com.example.judgev2.model.view.UserProfileViewModel;
 import com.example.judgev2.model.binding.UserRegisterBindingModel;
+import com.example.judgev2.model.entity.User;
 import com.example.judgev2.model.service.UserServiceModel;
 import com.example.judgev2.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/users")
@@ -103,4 +103,12 @@ public class UserController {
         userService.logoutUser();
         return "redirect:/";
     }
+
+    @GetMapping("/profile/{id}")
+    public String getProfilePage(@PathVariable Long id, Model model) {
+        UserProfileViewModel userProfileViewModel = userService.findById(id);
+        model.addAttribute("user", userProfileViewModel);
+        return "profile";
+    }
+
 }

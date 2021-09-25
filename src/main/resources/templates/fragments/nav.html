@@ -40,7 +40,7 @@
                     <a class="nav-link" href="/homework/add">Add Homework</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>
                 </li>
 
             </ul>

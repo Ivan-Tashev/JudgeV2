@@ -2,6 +2,7 @@ package com.example.judgev2.service;
 
 import com.example.judgev2.model.entity.User;
 import com.example.judgev2.model.service.UserServiceModel;
+import com.example.judgev2.model.view.UserProfileViewModel;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface UserService {
     void changeRole(String username, String role);
 
     User findByUsername(String username);
+
+    UserProfileViewModel findById(Long id);
 }
